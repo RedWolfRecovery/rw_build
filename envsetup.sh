@@ -674,6 +674,13 @@ function lunch()
     fi
     export CUSTOM_BUILD
 
+    if (echo -n $product | grep -q -e "kenzo\|land\|mido") ; then
+       DEVICE_HAS_2GB_VARIANT=true
+    else
+       DEVICE_HAS_2GB_VARIANT=
+    fi
+    export DEVICE_HAS_2GB_VARIANT
+
     export TARGET_PRODUCT=$product
     export TARGET_BUILD_VARIANT=$variant
     export TARGET_BUILD_TYPE=release
