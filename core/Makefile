@@ -1022,8 +1022,6 @@ define build-recoveryramdisk
             ln -sf /system_root/system $(TARGET_RECOVERY_ROOT_OUT)/system) # Mount the system_root_image to /system_root and symlink /system.
 endef
 
-RW_SCRIPT := vendor/redwolf/redwolf.sh
-
 # $(1): output file
 define build-recoveryimage-target
   $(if $(filter true,$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_SUPPORTS_VBOOT)), \
@@ -1036,7 +1034,6 @@ define build-recoveryimage-target
   $(if $(filter true,BOARD_USES_RECOVERY_AS_BOOT), \
     $(hide) $(call assert-max-image-size,$(1),$(BOARD_BOOTIMAGE_PARTITION_SIZE)), \
     $(hide) $(call assert-max-image-size,$(1),$(BOARD_RECOVERYIMAGE_PARTITION_SIZE)))
-  bash $(RW_SCRIPT)
 endef
 
 $(recovery_uncompressed_ramdisk): $(MKBOOTFS) \
@@ -1128,6 +1125,7 @@ endif
 
 .PHONY: recoveryimage
 recoveryimage: $(INSTALLED_RECOVERYIMAGE_TARGET) $(RECOVERY_RESOURCE_ZIP)
+	$(BASH) $(RW_SCRIPT)
 
 ifeq ($(BOARD_NAND_PAGE_SIZE),)
 BOARD_NAND_PAGE_SIZE := 2048
