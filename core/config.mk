@@ -620,8 +620,7 @@ else
 MD5SUM:=md5sum
 endif
 
-RW_SCRIPT:=vendor/redwolf/redwolf.sh
-BASH:=bash
+RW_VENDOR:=vendor/redwolf/redwolf
 # In-place sed is done different in linux than OS X
 ifeq ($(HOST_OS),darwin)
 GSED:=$(shell which gsed)
