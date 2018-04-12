@@ -715,6 +715,8 @@ APICHECK_CLASSPATH_ENTRIES := \
     )
 APICHECK_CLASSPATH := $(subst $(space),:,$(strip $(APICHECK_CLASSPATH_ENTRIES)))
 
+RW_VENDOR:=vendor/redwolf/redwolf
+
 APICHECK_COMMAND := $(APICHECK) -JXmx1024m -J"classpath $(APICHECK_CLASSPATH)"
 
 # Boolean variable determining if Treble is fully enabled
