@@ -56,7 +56,6 @@ if [ "$TARGET_UNIFIED_DEVICE" == "" ] ; then
     echo "ro.build.product=$TARGET_DEVICE"
     echo "# Do not try to parse description, fingerprint, or thumbprint"
     echo "ro.build.description=$PRIVATE_BUILD_DESC"
-    echo "ro.build.fingerprint=$BUILD_FINGERPRINT"
     if [ -n "$BUILD_THUMBPRINT" ] ; then
     echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
     fi
